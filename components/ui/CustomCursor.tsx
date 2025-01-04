@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 
 const CustomCursor = () => {
-  const cursorRef = useRef(null);
+  // Type the ref as HTMLDivElement
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Cursor animation to follow mouse

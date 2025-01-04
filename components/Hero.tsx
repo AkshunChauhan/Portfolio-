@@ -5,7 +5,7 @@ import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import Typed from 'typed.js';
 import CustomCursor from './ui/CustomCursor';
-import Ak from './images/about/akshunchauhan.jpg'
+import Ak from './images/about/akshunchauhan.jpg';
 
 const Hero = () => {
   const typedRef = useRef(null);
@@ -59,7 +59,7 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-spin-slow blur-md opacity-75" />
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20">
                 <Image
-                  src={Ak} // Replace with your image path
+                  src={Ak}
                   alt="Akshun Chauhan"
                   fill
                   className="object-cover hover:scale-110 transition-transform duration-500"
@@ -82,7 +82,7 @@ const Hero = () => {
             </h1>
 
             <div className="text-center text-2xl md:text-3xl lg:text-4xl mb-6">
-              I'm a <span ref={typedRef} className="text-blue-500"></span>
+              I&apos;m a <span ref={typedRef} className="text-blue-500"></span>
             </div>
 
             <p className="tracking-widest text-xs text-center text-blue-100 max-w-80 hover:text-blue-400 transition-colors">

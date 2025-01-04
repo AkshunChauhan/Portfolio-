@@ -19,7 +19,7 @@ const About = () => {
             </p>
             
             <p className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed">
-              In 2019, I was honored with the prestigious "All-Indian Science Competition" award. My technical skills span database management systems including PostgreSQL, MySQL, Oracle Database (PL/SQL), and MongoDB (NoSQL). I am proficient in web development using ASP.NET and the MERN stack and have developed desktop applications using JavaFX.
+              In 2019, I was honored with the prestigious &quot;All-Indian Science Competition&quot; award. My technical skills span database management systems including PostgreSQL, MySQL, Oracle Database (PL/SQL), and MongoDB (NoSQL). I am proficient in web development using ASP.NET and the MERN stack and have developed desktop applications using JavaFX.
             </p>
             
             <p className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed">
