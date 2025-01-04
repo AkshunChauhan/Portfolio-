@@ -1,10 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CustomCursor = () => {
-  // Type the ref as HTMLDivElement
+  const [isClient, setIsClient] = useState(false); // State to track client-side rendering
   const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Ensure this only runs on the client-side
+    setIsClient(true);
+
     // Cursor animation to follow mouse
     const handleMouseMove = (e: MouseEvent) => {
       if (cursorRef.current) {
@@ -33,6 +36,11 @@ const CustomCursor = () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
+
+  // Only render the cursor on the client side
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <div
