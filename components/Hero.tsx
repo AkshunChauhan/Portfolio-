@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useEffect } from 'react';
 import { FaLocationArrow } from "react-icons/fa6";
 import Image from 'next/image';
