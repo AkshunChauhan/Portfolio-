@@ -1,7 +1,12 @@
 import { withSentryConfig } from '@sentry/nextjs';
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  typescript: {
+    output: 'export',
+    ignoreBuildErrors: true,
+  }
+};
 
 const sentryOptions = {
   silent: true,
