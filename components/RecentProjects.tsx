@@ -1,7 +1,6 @@
 "use client";
 
 import { FaLocationArrow } from "react-icons/fa6";
-
 import { projects } from "@/data";
 import { PinContainer } from "./ui/Pin";
 
@@ -60,17 +59,26 @@ const RecentProjects = () => {
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
                     >
-                      <img src={icon} alt="icon5" className="p-2" />
+                      <img
+                        src={icon}
+                        alt={`icon${index + 1}`}
+                        className="p-2"
+                      />
                     </div>
                   ))}
                 </div>
 
-                <div className="flex justify-center items-center">
+                <a
+                  href={item.link || "https://github.com/AkshunChauhan"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex justify-center items-center cursor-pointer hover:opacity-80 transition-opacity"
+                >
                   <p className="flex lg:text-xl md:text-xs text-sm text-purple">
                     Source Code
                   </p>
                   <FaLocationArrow className="ms-3" color="#CBACF9" />
-                </div>
+                </a>
               </div>
             </PinContainer>
           </div>
