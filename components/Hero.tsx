@@ -1,11 +1,12 @@
 "use client";
+
 import { useRef, useEffect } from 'react';
 import { FaLocationArrow } from "react-icons/fa6";
 import Image from 'next/image';
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import Typed from 'typed.js';
-import CustomCursor from './ui/CustomCursor';
+// import CustomCursor from './ui/CustomCursor';
 import Ak from './images/about/akshunchauhan.jpg';
 
 const Hero = () => {
@@ -34,7 +35,7 @@ const Hero = () => {
 
   return (
     <>
-      <CustomCursor />
+      {/* <CustomCursor /> */}
 
       <div ref={containerRef} className="pb-20 pt-36">
         <div>
