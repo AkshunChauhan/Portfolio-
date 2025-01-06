@@ -69,14 +69,19 @@ export const gridItems = [
   },
 ];
 
-
 export const projects = [
   {
     id: 1,
     title: "Invoicing System",
     des: " invoicing system that automates invoice creation, sends them to customers with a payment gateway, and emails a thank-you message after payment.",
     img: "/invoice.png",
-    iconLists: ["/re.svg", "/tail.svg","/ts.svg", "/next.svg", "/skill-post.png"],
+    iconLists: [
+      "/re.svg",
+      "/tail.svg",
+      "/ts.svg",
+      "/next.svg",
+      "/skill-post.png",
+    ],
     link: "https://github.com/AkshunChauhan/Invoicing-system.git",
   },
   {
@@ -84,7 +89,13 @@ export const projects = [
     title: "Energy Innovation Link",
     des: "Desktop app help access data from IoT sensors stored in the cloud. Researchers can easily download the required data without needing SQL skills, making the process efficient and user-friendly.",
     img: "/EIL.png",
-    iconLists: ["/ts.svg", "/re.svg", "/Electron.png" ,"/skill-post.png", "/azure.png"],
+    iconLists: [
+      "/ts.svg",
+      "/re.svg",
+      "/Electron.png",
+      "/skill-post.png",
+      "/azure.png",
+    ],
     link: "https://github.com/eicdevs/Energy-Innovation-Link.git",
   },
   {
@@ -100,7 +111,13 @@ export const projects = [
     title: "Netflix Data Analysis",
     des: "Developed an interactive dashboard using a Netflix shows dataset from Kaggle, filtering out missing values and creating dynamic graphs to provide insights, allowing users to explore data trends and patterns.",
     img: "/netflix.png",
-    iconLists: ["/re.svg", "/skill-dj.jpg", "/Pandas.png", "/Matplotlib_icon.svg", "/sqlite.svg"],
+    iconLists: [
+      "/re.svg",
+      "/skill-dj.jpg",
+      "/Pandas.png",
+      "/Matplotlib_icon.svg",
+      "/sqlite.svg",
+    ],
     link: "https://github.com/AkshunChauhan/Netflix-data-insights.git",
   },
   {
@@ -116,7 +133,13 @@ export const projects = [
     title: "Campus Connect",
     des: "Developed a campus-specific social media application for college students to connect, collaborate, and engage in academic activities, providing a platform for easy interaction and teamwork.",
     img: "/java.png",
-    iconLists: ["/re.svg", "/firebase.png","/skill-java.webp","/skill-mysql.png", "/icons8-spring-boot.svg"],
+    iconLists: [
+      "/re.svg",
+      "/firebase.png",
+      "/skill-java.webp",
+      "/skill-mysql.png",
+      "/icons8-spring-boot.svg",
+    ],
     link: "https://github.com/AkshunChauhan/CampusConnect.git",
   },
   {
@@ -124,41 +147,18 @@ export const projects = [
     title: "Apna Market",
     des: "Developed a peer-to-peer marketplace platform for college students to buy, sell, lend, and share resources, such as books, promoting a convenient and collaborative community.",
     img: "/apna.png",
-    iconLists: ["/re.svg", "/firebase.png","/skill-mongo.png"],
-    link: "https://github.com/AkshunChauhan/Apna_Market_2.0.git"
+    iconLists: ["/re.svg", "/firebase.png", "/skill-mongo.png"],
+    link: "https://github.com/AkshunChauhan/Apna_Market_2.0.git",
   },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Akshun Chauhan is a talented Data Analyst with exceptional skills in IoT, cloud systems, and Power BI. His work in solar metrics and renewable energy showcases his passion for impactful innovation. Dedicated, skilled, and forward-thinking, Akshun is a true asset to any team.",
+    name: "Yash Kumar",
+    title: "Senior Analyst at Evalueserver",
+    headshot: "/yash.jpg",
   },
 ];
 
