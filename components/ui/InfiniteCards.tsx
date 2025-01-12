@@ -32,25 +32,24 @@ export const InfiniteMovingCards = ({
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (isPaused) return;
-
-      // Resume animation after scrolling
-      if (containerRef.current) {
-        containerRef.current.style.setProperty(
-          "animation-play-state",
-          "running"
-        );
-      }
-    };
+    const handlePointerDown = () => pauseAnimation();
+    const handlePointerUp = () => resumeAnimation();
+    const handleScroll = () => pauseAnimation();
 
     const container = containerRef.current;
+
+    // Add event listeners for user interaction
+    container?.addEventListener("pointerdown", handlePointerDown);
+    container?.addEventListener("pointerup", handlePointerUp);
     container?.addEventListener("scroll", handleScroll);
 
     return () => {
+      // Cleanup event listeners
+      container?.removeEventListener("pointerdown", handlePointerDown);
+      container?.removeEventListener("pointerup", handlePointerUp);
       container?.removeEventListener("scroll", handleScroll);
     };
-  }, [isPaused]);
+  }, []);
 
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
@@ -68,6 +67,20 @@ export const InfiniteMovingCards = ({
       setStart(true);
     }
   }
+
+  const pauseAnimation = () => {
+    if (containerRef.current) {
+      containerRef.current.style.setProperty("animation-play-state", "paused");
+      setIsPaused(true);
+    }
+  };
+
+  const resumeAnimation = () => {
+    if (containerRef.current) {
+      containerRef.current.style.setProperty("animation-play-state", "running");
+      setIsPaused(false);
+    }
+  };
 
   const getDirection = () => {
     if (containerRef.current) {
@@ -95,20 +108,6 @@ export const InfiniteMovingCards = ({
     }
   };
 
-  const handlePointerDown = () => {
-    if (containerRef.current) {
-      containerRef.current.style.setProperty("animation-play-state", "paused");
-      setIsPaused(true);
-    }
-  };
-
-  const handlePointerUp = () => {
-    if (containerRef.current) {
-      containerRef.current.style.setProperty("animation-play-state", "running");
-      setIsPaused(false);
-    }
-  };
-
   return (
     <div
       ref={containerRef}
@@ -128,8 +127,6 @@ export const InfiniteMovingCards = ({
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
-        onPointerDown={handlePointerDown} // Pause animation when clicking/tapping
-        onPointerUp={handlePointerUp} // Resume animation after interaction
       >
         {items.map((item, idx) => (
           <li
