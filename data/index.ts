@@ -160,6 +160,13 @@ export const testimonials = [
     title: "Senior Analyst at Evalueserver",
     headshot: "/yash.jpg",
   },
+  {
+    quote:
+      "Akshun Chauhan is an exceptionally skilled professional with expertise in database management, web development, and data analysis. Having collaborated with him on multiple projects at Red Deer Polytechnic, I was consistently impressed by his contributions, particularly in data analysis for evaluating various solar configurations and his development of the 'Energy Innovation Link' app, which greatly enhanced access to data for applied research. His technical proficiency, innovative mindset, and dedication make him a valuable asset to any organization seeking top-tier talent.",
+    name: "Shehan Herathge",
+    title: "Research Engineer | E.I.T. | M.Sc.",
+    headshot: "/shen.jpeg",
+  },
 ];
 
 export const companies = [
