@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
@@ -26,32 +24,54 @@ export const InfiniteMovingCards = ({
 
   const [isPaused, setIsPaused] = useState(false);
   const [start, setStart] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  let scrollTimeout: NodeJS.Timeout;
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
 
   useEffect(() => {
     addAnimation();
   }, []);
 
   useEffect(() => {
-    const handlePointerDown = () => pauseAnimation();
-    const handlePointerUp = () => resumeAnimation();
-    const handleScroll = () => pauseAnimation();
+    const handleScroll = () => {
+      if (containerRef.current) {
+        containerRef.current.style.setProperty(
+          "animation-play-state",
+          "paused"
+        );
+        setIsPaused(true);
+
+        clearTimeout(scrollTimeout);
+
+        scrollTimeout = setTimeout(() => {
+          containerRef.current?.style.setProperty(
+            "animation-play-state",
+            "running"
+          );
+          setIsPaused(false);
+        }, 200);
+      }
+    };
 
     const container = containerRef.current;
-
-    // Add event listeners for user interaction
-    container?.addEventListener("pointerdown", handlePointerDown);
-    container?.addEventListener("pointerup", handlePointerUp);
     container?.addEventListener("scroll", handleScroll);
 
     return () => {
-      // Cleanup event listeners
-      container?.removeEventListener("pointerdown", handlePointerDown);
-      container?.removeEventListener("pointerup", handlePointerUp);
       container?.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
     };
-  }, []);
+  }, [isMobile]);
 
-  function addAnimation() {
+  const addAnimation = () => {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
 
@@ -65,20 +85,6 @@ export const InfiniteMovingCards = ({
       getDirection();
       getSpeed();
       setStart(true);
-    }
-  }
-
-  const pauseAnimation = () => {
-    if (containerRef.current) {
-      containerRef.current.style.setProperty("animation-play-state", "paused");
-      setIsPaused(true);
-    }
-  };
-
-  const resumeAnimation = () => {
-    if (containerRef.current) {
-      containerRef.current.style.setProperty("animation-play-state", "running");
-      setIsPaused(false);
     }
   };
 
@@ -108,6 +114,20 @@ export const InfiniteMovingCards = ({
     }
   };
 
+  const handlePointerDown = () => {
+    if (containerRef.current) {
+      containerRef.current.style.setProperty("animation-play-state", "paused");
+      setIsPaused(true);
+    }
+  };
+
+  const handlePointerUp = () => {
+    if (containerRef.current) {
+      containerRef.current.style.setProperty("animation-play-state", "running");
+      setIsPaused(false);
+    }
+  };
+
   return (
     <div
       ref={containerRef}
@@ -127,11 +147,13 @@ export const InfiniteMovingCards = ({
           start && "animate-scroll",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
       >
         {items.map((item, idx) => (
           <li
             key={idx}
-            className="w-[90vw] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-800 p-5 md:p-16 md:w-[60vw]"
+            className="w-[90vw] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-800 p-5 md:p-16 md:w-[60vw] sm:w-[80vw]"
             style={{
               background: "rgb(4,7,29)",
               backgroundColor:
@@ -143,7 +165,7 @@ export const InfiniteMovingCards = ({
                 aria-hidden="true"
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
-              <span className="relative z-20 text-sm md:text-lg leading-[1.6] text-white font-normal">
+              <span className="relative z-20 text-xs sm:text-sm md:text-lg leading-[1.6] text-white font-normal">
                 {item.quote}
               </span>
               <div className="relative z-20 mt-6 flex flex-row items-center">
@@ -151,15 +173,15 @@ export const InfiniteMovingCards = ({
                   <img
                     src={item.headshot}
                     alt={`Headshot of ${item.name}`}
-                    className="rounded-full w-10 h-10 object-cover"
+                    className="rounded-full w-8 h-8 sm:w-10 sm:h-10 object-cover"
                   />
                 </span>
 
                 <span className="flex flex-col gap-1">
-                  <span className="text-xl font-bold leading-[1.6] text-white">
+                  <span className="text-sm sm:text-xl font-bold leading-[1.6] text-white">
                     {item.name}
                   </span>
-                  <span className="text-sm leading-[1.6] text-white-200 font-normal">
+                  <span className="text-xs sm:text-sm leading-[1.6] text-white-200 font-normal">
                     {item.title}
                   </span>
                 </span>
